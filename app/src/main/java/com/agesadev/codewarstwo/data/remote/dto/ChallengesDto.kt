@@ -17,6 +17,6 @@ fun ChallengesDto.toCompletedChallengesEntity(): CompletedChallengesEntity {
         id = id,
         name = name,
         slug = slug,
-        username = ""
+        username = "matt c"
     )
 }

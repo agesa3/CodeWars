@@ -11,6 +11,6 @@ interface CodeWarsApi {
     @GET("users/{username}/code-challenges/completed")
     fun getCompletedChallenges(
         @Path("username") username: String,
-        @Query("page") page: Int
+        @Query("page") page: Int = 0
     ): CompletedChallengesDto
 }
