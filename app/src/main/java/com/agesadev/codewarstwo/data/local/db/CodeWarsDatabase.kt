@@ -2,6 +2,9 @@ package com.agesadev.codewarstwo.data.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import com.agesadev.codewarstwo.data.local.converters.LanguagesConverter
 import com.agesadev.codewarstwo.data.local.dao.CompletedChallengesDao
 import com.agesadev.codewarstwo.data.local.dao.RemoteKeysDao
 import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
@@ -12,6 +15,7 @@ import com.agesadev.codewarstwo.data.local.model.RemoteKeys
     version = 1,
     exportSchema = false
 )
+@TypeConverters(LanguagesConverter::class)
 abstract class CodeWarsDatabase : RoomDatabase() {
     abstract fun completedChallengesDao(): CompletedChallengesDao
     abstract fun remoteKeysDao(): RemoteKeysDao
