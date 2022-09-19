@@ -1,7 +1,6 @@
 package com.agesadev.codewarstwo.data.remote.api
 
 import com.agesadev.codewarstwo.data.remote.dto.CompletedChallengesDto
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
