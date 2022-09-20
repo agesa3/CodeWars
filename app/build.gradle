@@ -108,4 +108,8 @@ dependencies {
     //compose markdown
     implementation 'com.github.jeziellago:compose-markdown:0.3.0'
 
+    //splash screen api
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+
 }
