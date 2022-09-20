@@ -11,6 +11,7 @@ import androidx.paging.map
 import com.agesadev.codewarstwo.domain.mappers.toCompletedChallenges
 import com.agesadev.codewarstwo.domain.usecase.GetCompletedChallengesUseCase
 import com.agesadev.codewarstwo.presentation.model.CompletedChallenges
+import com.agesadev.codewarstwo.util.Utils.TEST_USERNAME
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
@@ -45,7 +46,7 @@ class ChallengeListViewModel @Inject constructor(
 //            pagingData.map { it.toCompletedChallenges() }
 //        }
     val completedChallenges: Flow<PagingData<CompletedChallenges>> =
-        getCompletedChallengesUseCase("matt c").cachedIn(viewModelScope)
+        getCompletedChallengesUseCase(TEST_USERNAME).cachedIn(viewModelScope)
             .map { pagingData ->
                 pagingData.map { it.toCompletedChallenges() }
             }

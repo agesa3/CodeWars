@@ -17,11 +17,11 @@ class CodeWarsPagingSource(
         val position = params.key ?: CODEWARS_STARTING_INDEX
         return try {
             val response = codeWarsApi.getCompletedChallenges(query, position)
-            val users = response.data
+            val userChallenges = response.data
             LoadResult.Page(
-                data = users,
+                data = userChallenges,
                 prevKey = if (position == CODEWARS_STARTING_INDEX) null else position - 1,
-                nextKey = if (users.isEmpty()) null else position + 1
+                nextKey = if (userChallenges.isEmpty()) null else position + 1
             )
         } catch (e: IOException) {
             LoadResult.Error(e)
@@ -31,6 +31,10 @@ class CodeWarsPagingSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, ChallengesDto>): Int? {
-        return state.anchorPosition
+        return state.anchorPosition.let { anchorPosition ->
+            anchorPosition?.let { state.closestPageToPosition(it)?.prevKey?.plus(1) }
+                ?: anchorPosition?.let { state.closestPageToPosition(it)?.nextKey?.minus(1) }
+
+        }
     }
 }
