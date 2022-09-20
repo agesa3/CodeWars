@@ -11,10 +11,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.flatMap
+import com.agesadev.codewarstwo.presentation.navigation.Screen
 import com.agesadev.codewarstwo.presentation.screens.challengelist.components.CompletedChallengeItem
 
 @Composable
 fun CompletedChallengesScreen(
+    navController: NavController,
     viewModel: ChallengeListViewModel = hiltViewModel()
 ) {
 //    val challenges = viewModel.completedChallenges.value
@@ -38,7 +40,9 @@ fun CompletedChallengesScreen(
         LazyColumn {
             items(challenges.itemCount) {
                 challenges[it]?.let { challenge ->
-                    CompletedChallengeItem(challenge)
+                    CompletedChallengeItem(challenge, onChallengeClicked = {
+                        navController.navigate(Screen.ChallengeDetailScreen.route + "/${challenge.id}")
+                    })
                 }
             }
         }

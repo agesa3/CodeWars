@@ -1,5 +1,6 @@
 package com.agesadev.codewarstwo.presentation.screens.challengelist.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,13 +14,16 @@ import androidx.compose.ui.unit.dp
 import com.agesadev.codewarstwo.presentation.model.CompletedChallenges
 
 @Composable
-fun CompletedChallengeItem(challenges: CompletedChallenges) {
-    //card to show completed challenges
+fun CompletedChallengeItem(
+    challenges: CompletedChallenges,
+    onChallengeClicked: (CompletedChallenges) -> Unit
+) {
     Card(
         elevation = 8.dp,
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .clickable { onChallengeClicked(challenges) }
     ) {
         Column(
             modifier = Modifier
@@ -43,7 +47,7 @@ fun CompletedChallengeItem(challenges: CompletedChallenges) {
 @Preview
 @Composable
 fun PreviewCompletedChallengeItem() {
-    CompletedChallengeItem(challenges = challengesTest)
+    CompletedChallengeItem(challenges = challengesTest,{})
 }
 
 val challengesTest: CompletedChallenges = CompletedChallenges(

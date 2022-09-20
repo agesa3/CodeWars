@@ -9,7 +9,7 @@ import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
 import com.agesadev.codewarstwo.data.local.model.RemoteKeys
 import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
-import com.agesadev.codewarstwo.data.remote.dto.toCompletedChallengesEntity
+import com.agesadev.codewarstwo.data.remote.dto.completed.toCompletedChallengesEntity
 import com.agesadev.codewarstwo.util.Utils.CODEWARS_STARTING_INDEX
 import retrofit2.HttpException
 import java.io.IOException

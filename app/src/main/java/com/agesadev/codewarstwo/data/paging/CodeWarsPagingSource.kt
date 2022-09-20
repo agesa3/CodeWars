@@ -3,7 +3,7 @@ package com.agesadev.codewarstwo.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
-import com.agesadev.codewarstwo.data.remote.dto.ChallengesDto
+import com.agesadev.codewarstwo.data.remote.dto.completed.ChallengesDto
 import com.agesadev.codewarstwo.util.Utils.CODEWARS_STARTING_INDEX
 import retrofit2.HttpException
 import java.io.IOException
