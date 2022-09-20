@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.paging.*
 import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.mappers.toCompletedChallengesDomain
+import com.agesadev.codewarstwo.data.paging.CodeWarsPagingSource
 import com.agesadev.codewarstwo.data.paging.CodeWarsRemoteMediator
 import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
+import com.agesadev.codewarstwo.data.remote.dto.toCompletedChallengesEntity
 import com.agesadev.codewarstwo.domain.model.CompletedChallengesDomain
 import com.agesadev.codewarstwo.domain.repository.CompletedChallengesRepository
 import kotlinx.coroutines.flow.Flow
@@ -63,8 +65,24 @@ class CompletedChallengesRepoImpl @Inject constructor(
         }
     }
 
+    override fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                maxSize = NETWORK_PAGE_SIZE + (NETWORK_PAGE_SIZE * 2),
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { CodeWarsPagingSource(codeWarsApi, username) }
+
+        ).flow.map { pagingData ->
+            pagingData.map { completedChallengesEntity ->
+                completedChallengesEntity.toCompletedChallengesDomain()
+            }
+        }
+    }
+
     companion object {
-        private const val NETWORK_PAGE_SIZE = 200
+        private const val NETWORK_PAGE_SIZE = 50
     }
 
 }
