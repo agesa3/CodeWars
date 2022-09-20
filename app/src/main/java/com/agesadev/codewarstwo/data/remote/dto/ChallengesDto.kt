@@ -1,6 +1,7 @@
 package com.agesadev.codewarstwo.data.remote.dto
 
 import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
+import com.agesadev.codewarstwo.util.Utils.TEST_USERNAME
 
 data class ChallengesDto(
     val completedAt: String,
@@ -17,6 +18,6 @@ fun ChallengesDto.toCompletedChallengesEntity(): CompletedChallengesEntity {
         id = id,
         name = name,
         slug = slug,
-        username = "matt c"
+        username = TEST_USERNAME
     )
 }

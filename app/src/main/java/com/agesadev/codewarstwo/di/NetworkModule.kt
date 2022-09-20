@@ -1,5 +1,6 @@
 package com.agesadev.codewarstwo.di
 
+import com.agesadev.codewarstwo.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

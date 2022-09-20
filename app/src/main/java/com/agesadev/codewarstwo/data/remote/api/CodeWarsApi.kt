@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface CodeWarsApi {
 
     @GET("users/{username}/code-challenges/completed")
-    fun getCompletedChallenges(
+   suspend fun getCompletedChallenges(
         @Path("username") username: String,
         @Query("page") page: Int = 0
     ): CompletedChallengesDto

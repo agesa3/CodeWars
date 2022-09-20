@@ -10,6 +10,7 @@ import com.agesadev.codewarstwo.domain.model.CompletedChallengesDomain
 import com.agesadev.codewarstwo.domain.repository.CompletedChallengesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 import javax.inject.Inject
 
 class CompletedChallengesRepoImpl @Inject constructor(
@@ -18,7 +19,7 @@ class CompletedChallengesRepoImpl @Inject constructor(
 ) : CompletedChallengesRepository {
     @OptIn(ExperimentalPagingApi::class)
     override fun getCompletedChallengesByUsername(username: String): Flow<PagingData<CompletedChallengesDomain>> {
-        Log.d("Repository", "getCompletedChallengesByUsername: $username")
+        Timber.tag("Repository").d("getCompletedChallengesByUsername: %s", username)
         val pagingSourceFactory =
             { codeWarsDatabase.completedChallengesDao().getCompletedChallengesByUsername(username) }
         return Pager(
@@ -41,7 +42,7 @@ class CompletedChallengesRepoImpl @Inject constructor(
 
     @OptIn(ExperimentalPagingApi::class)
     override fun getAllCompletedChallenges(): Flow<PagingData<CompletedChallengesDomain>> {
-        Log.d("Repository", "getAllCompletedChallenges")
+        Timber.tag("Repository").d("getAllCompletedChallenges")
         val pagingSourceFactory =
             { codeWarsDatabase.completedChallengesDao().getCompletedChallenges() }
         return Pager(
@@ -50,7 +51,7 @@ class CompletedChallengesRepoImpl @Inject constructor(
                 enablePlaceholders = false
             ),
             remoteMediator = CodeWarsRemoteMediator(
-                "matt c",
+                "",
                 codeWarsApi,
                 codeWarsDatabase
             ),
@@ -63,7 +64,7 @@ class CompletedChallengesRepoImpl @Inject constructor(
     }
 
     companion object {
-        private const val NETWORK_PAGE_SIZE = 50
+        private const val NETWORK_PAGE_SIZE = 200
     }
 
 }

@@ -68,7 +68,7 @@ class CodeWarsRemoteMediator(
                 codeWarsDatabase.completedChallengesDao()
                     .insertCompletedChallenges(challenges.map { it.toCompletedChallengesEntity() })
             }
-            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+            return MediatorResult.Success(endOfPaginationReached = false)
         } catch (exception: IOException) {
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
