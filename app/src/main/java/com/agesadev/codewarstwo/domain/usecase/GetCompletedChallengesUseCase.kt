@@ -8,4 +8,6 @@ class GetCompletedChallengesUseCase @Inject constructor(
 ) {
     operator fun invoke(username: String) =
         completedChallengesRepo.getCompletedChallengesByUsername(username = username)
+//    operator fun invoke(username: String) =
+//        completedChallengesRepo.getCompletedChallengesByUsernameFromApi(username = username)
 }

@@ -10,6 +10,7 @@ import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
 import com.agesadev.codewarstwo.data.local.model.RemoteKeys
 import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
 import com.agesadev.codewarstwo.data.remote.dto.toCompletedChallengesEntity
+import com.agesadev.codewarstwo.util.Utils.CODEWARS_STARTING_INDEX
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -31,13 +32,13 @@ class CodeWarsRemoteMediator(
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                remoteKeys?.nextKey?.minus(1) ?: CODE_WARS_STARTING_PAGE_INDEX
+                remoteKeys?.nextKey?.minus(1) ?: CODEWARS_STARTING_INDEX
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
                 val prevKey = remoteKeys?.prevKey
                 if (prevKey == null) {
-                    return MediatorResult.Success(endOfPaginationReached = true)
+                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
                 }
                 prevKey
             }
@@ -45,7 +46,7 @@ class CodeWarsRemoteMediator(
                 val remoteKeys = getRemoteKeyForLastItem(state)
                 val nextKey = remoteKeys?.nextKey
                 if (nextKey == null) {
-                    return MediatorResult.Success(endOfPaginationReached = true)
+                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
                 }
                 nextKey
             }
@@ -59,7 +60,7 @@ class CodeWarsRemoteMediator(
                     codeWarsDatabase.remoteKeysDao().clearRemoteKeys()
                     codeWarsDatabase.completedChallengesDao().deleteCompletedChallenges()
                 }
-                val prevKey = if (page == CODE_WARS_STARTING_PAGE_INDEX) null else page - 1
+                val prevKey = if (page == CODEWARS_STARTING_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = challenges.map {
                     RemoteKeys(challengeId = it.id, prevKey = prevKey, nextKey = nextKey)
@@ -78,16 +79,16 @@ class CodeWarsRemoteMediator(
     }
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, CompletedChallengesEntity>): RemoteKeys? {
-        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
-            ?.let { challenge ->
-                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(challenge.id)
+        return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
+            ?.let { repo ->
+                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
             }
     }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, CompletedChallengesEntity>): RemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
-            ?.let { challenge ->
-                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(challenge.id)
+            ?.let { repo ->
+                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
             }
     }
 
@@ -95,13 +96,11 @@ class CodeWarsRemoteMediator(
         state: PagingState<Int, CompletedChallengesEntity>
     ): RemoteKeys? {
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { challengeId ->
-                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(challengeId)
+            state.closestItemToPosition(position)?.id?.let { repoId ->
+                codeWarsDatabase.remoteKeysDao().remoteKeysRepoId(repoId)
             }
         }
     }
 
-    companion object {
-        private const val CODE_WARS_STARTING_PAGE_INDEX = 0
-    }
+
 }
