@@ -3,16 +3,15 @@ package com.agesadev.codewarstwo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.agesadev.codewarstwo.presentation.navigation.Screen
+import com.agesadev.codewarstwo.presentation.screens.challengedetails.ChallengeDetailsScreen
 import com.agesadev.codewarstwo.presentation.screens.challengelist.CompletedChallengesScreen
-import com.agesadev.codewarstwo.presentation.screens.challengelist.components.CompletedChallengeItem
 import com.agesadev.codewarstwo.ui.theme.CodewarsTwoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,10 +19,22 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val splashScreen = installSplashScreen()
         setContent {
             CodewarsTwoTheme {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    CompletedChallengesScreen()
+                Surface(color = MaterialTheme.colors.surface) {
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.CompletedChallengesScreen.route
+                    ) {
+                        composable(route = Screen.CompletedChallengesScreen.route) {
+                            CompletedChallengesScreen(navController)
+                        }
+                        composable(route = Screen.ChallengeDetailScreen.route + "/{challengeId}") {
+                            ChallengeDetailsScreen()
+                        }
+                    }
                 }
             }
         }

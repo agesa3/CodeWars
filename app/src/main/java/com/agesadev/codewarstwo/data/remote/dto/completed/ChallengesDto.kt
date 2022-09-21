@@ -1,4 +1,4 @@
-package com.agesadev.codewarstwo.data.remote.dto
+package com.agesadev.codewarstwo.data.remote.dto.completed
 
 import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
 import com.agesadev.codewarstwo.util.Utils.TEST_USERNAME
