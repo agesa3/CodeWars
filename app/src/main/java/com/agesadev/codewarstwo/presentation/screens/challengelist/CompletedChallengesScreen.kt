@@ -48,10 +48,7 @@ fun CompletedChallengesScreen(
             }
         }
     }
-
 }
-
-
 
 @Composable
 fun ErrorChallengeItem() {

@@ -2,6 +2,8 @@ package com.agesadev.codewarstwo.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
     const val DB_NAME = "codewars_db"
@@ -16,6 +18,18 @@ sealed class Resource<T>(val data: T? = null, val message: String? = null) {
     class Loading<T>(data: T? = null) : Resource<T>(data)
     class Error<T>(message: String, data: T? = null) : Resource<T>(data, message)
 }
+
+
+fun dateUtilConverter(inputDate: String): String {
+    val currentDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.UK)
+    val date = currentDateFormat.parse(inputDate)
+    val newDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.UK)
+    if (date != null) {
+        return newDateFormat.format(date)
+    }
+    return ""
+}
+
 
 ////use kotlin flows
 //object GetOperation {

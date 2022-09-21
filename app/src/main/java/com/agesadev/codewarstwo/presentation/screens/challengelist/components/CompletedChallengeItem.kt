@@ -9,9 +9,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.agesadev.codewarstwo.presentation.model.CompletedChallenges
+import com.agesadev.codewarstwo.util.dateUtilConverter
 
 @Composable
 fun CompletedChallengeItem(
@@ -36,7 +38,8 @@ fun CompletedChallengeItem(
                 modifier = Modifier.padding(8.dp)
             )
             Text(
-                text = challenges.completedAt,
+                text = "Created ${dateUtilConverter(challenges.completedAt)}",
+                fontStyle = FontStyle.Italic,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(8.dp)
             )
@@ -47,7 +50,7 @@ fun CompletedChallengeItem(
 @Preview
 @Composable
 fun PreviewCompletedChallengeItem() {
-    CompletedChallengeItem(challenges = challengesTest,{})
+    CompletedChallengeItem(challenges = challengesTest, {})
 }
 
 val challengesTest: CompletedChallenges = CompletedChallenges(
@@ -58,3 +61,5 @@ val challengesTest: CompletedChallenges = CompletedChallenges(
     slug = "slug",
     username = "username"
 )
+
+//2016-03-03T17:18:53.028Z convert this date to mm/dd/yyyy
