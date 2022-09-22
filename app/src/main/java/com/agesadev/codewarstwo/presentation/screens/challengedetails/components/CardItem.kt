@@ -14,26 +14,34 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.agesadev.codewarstwo.R
+import com.agesadev.codewarstwo.util.TestTags.CARD_DETAIL_SCREEN_ITEM
 
 @Composable
 fun CardItem(value: Int, content: String, imageResource: Int) {
+
+    val resId = R.drawable.ic_star
     Card(
         modifier = Modifier
             .width(100.dp)
             .height(100.dp)
-            .testTag("cardItem"),
+            .testTag(CARD_DETAIL_SCREEN_ITEM),
         shape = RoundedCornerShape(10.dp),
         elevation = 10.dp
     ) {
-        Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)) {
             Image(
                 painterResource(imageResource),
-                contentDescription = "",
+                contentDescription = resId.toString(),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(30.dp)

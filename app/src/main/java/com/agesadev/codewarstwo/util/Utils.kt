@@ -38,4 +38,5 @@ object TestTags {
     const val DATE_COMPLETED = "dateCompleted"
     const val MY_SPACER = "mySpacerTag"
     const val MY_TEXT= "myTextTag"
+    const val CARD_DETAIL_SCREEN_ITEM = "cardDetailScreenItem"
 }
