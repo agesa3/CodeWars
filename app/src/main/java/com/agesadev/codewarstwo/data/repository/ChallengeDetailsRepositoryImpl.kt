@@ -1,6 +1,5 @@
 package com.agesadev.codewarstwo.data.repository
 
-import android.util.Log
 import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.mappers.toChallengeDetailsDomain
 import com.agesadev.codewarstwo.data.mappers.toChallengeDetailsEntity
@@ -8,8 +7,8 @@ import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
 import com.agesadev.codewarstwo.domain.model.ChallengeDetailsDomain
 import com.agesadev.codewarstwo.domain.repository.ChallengeDetailsRepository
 import com.agesadev.codewarstwo.util.Resource
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException

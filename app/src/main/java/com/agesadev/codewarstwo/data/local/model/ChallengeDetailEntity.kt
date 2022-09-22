@@ -1,5 +1,6 @@
 package com.agesadev.codewarstwo.data.local.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -18,12 +19,14 @@ data class ChallengeDetailEntity(
     val description: String,
     @PrimaryKey
     val id: String,
+    @ColumnInfo(name = "challenge_languages")
     val languages: List<String>,
     val name: String,
     val publishedAt: String,
     @Embedded
     val rank: Rank,
     val slug: String,
+    @ColumnInfo(name = "challenge_tags")
     val tags: List<String>,
     val totalAttempts: Int,
     val totalCompleted: Int,
