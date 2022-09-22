@@ -65,7 +65,7 @@ class CompletedChallengesScreenKtTest {
     }
 
     @Test
-    fun testLazyColumn_displayLazy_column() {
+    fun testIfLazyColumnDisplays() {
         composeRule.onNodeWithTag(LAZY_COLUMN_COMPLETED).assertIsDisplayed()
     }
 

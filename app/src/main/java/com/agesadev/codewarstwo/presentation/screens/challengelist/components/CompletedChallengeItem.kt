@@ -22,7 +22,8 @@ import com.agesadev.codewarstwo.util.dateUtilConverter
 @Composable
 fun CompletedChallengeItem(
     challenges: CompletedChallenges,
-    onChallengeClicked: (CompletedChallenges) -> Unit
+    onChallengeClicked: (CompletedChallenges) -> Unit,
+    modifier: Modifier? = Modifier
 ) {
     Card(
         elevation = 8.dp,

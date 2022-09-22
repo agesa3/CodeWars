@@ -36,4 +36,6 @@ object TestTags {
     const val LIST_CARD_ITEM= "listCardItem"
     const val CHALLENGE_NAME = "challengeName"
     const val DATE_COMPLETED = "dateCompleted"
+    const val MY_SPACER = "mySpacerTag"
+    const val MY_TEXT= "myTextTag"
 }

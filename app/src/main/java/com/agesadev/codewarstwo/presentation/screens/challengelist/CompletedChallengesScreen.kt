@@ -27,12 +27,21 @@ fun CompletedChallengesScreen(
 ) {
 
     val challenges = viewModel.completedChallenges.collectAsLazyPagingItems()
-    LazyColumn(modifier = Modifier.fillMaxSize().testTag(LAZY_COLUMN_COMPLETED)) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(LAZY_COLUMN_COMPLETED)
+    ) {
         items(challenges.itemCount) { index ->
             challenges[index]?.let { challenge ->
-                CompletedChallengeItem(challenges = challenge, onChallengeClicked = {
-                    navController.navigate(Screen.ChallengeDetailScreen.route + "/${challenge.id}")
-                })
+                CompletedChallengeItem(
+                    modifier = Modifier.testTag("CARD_ITEM_COMPOSABLE"),
+                    challenges = challenge, onChallengeClicked = {
+                        navController.navigate(
+                            Screen.ChallengeDetailScreen.route + "/${challenge.id}"
+
+                        )
+                    })
             }
         }
         challenges.apply {

@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -21,6 +22,8 @@ import androidx.navigation.NavController
 import com.agesadev.codewarstwo.R
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.CardItem
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.ChallengeTag
+import com.agesadev.codewarstwo.util.TestTags.MY_SPACER
+import com.agesadev.codewarstwo.util.TestTags.MY_TEXT
 import com.google.accompanist.flowlayout.FlowRow
 import dev.jeziellago.compose.markdowntext.MarkdownText
 import timber.log.Timber
@@ -65,6 +68,7 @@ fun ChallengeDetailsScreen(
                     },
                     backgroundColor = MaterialTheme.colors.primary,
                     elevation = 0.dp
+
                 )
             }
         ) {
@@ -158,7 +162,11 @@ fun ChallengeDetailsScreen(
 
 @Composable
 fun MySpacer(spacerHeight: Int) {
-    Spacer(modifier = Modifier.height(spacerHeight.dp))
+    Spacer(
+        modifier = Modifier
+            .height(spacerHeight.dp)
+            .testTag(MY_SPACER)
+    )
 }
 
 @Composable
@@ -167,7 +175,8 @@ fun MyTitleText(text: String) {
         text = text,
         textAlign = TextAlign.Start,
         color = Color.Black,
-        style = MaterialTheme.typography.h6
+        style = MaterialTheme.typography.h6,
+        modifier = Modifier.testTag(MY_TEXT)
     )
 }
 
