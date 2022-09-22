@@ -6,7 +6,11 @@
         <entry key="../../../../layout/compose-model-1663698540051.xml" value="0.67" />
         <entry key="../../../../layout/compose-model-1663701155464.xml" value="0.75" />
         <entry key="../../../../layout/compose-model-1663703307186.xml" value="0.24259259259259258" />
+        <entry key="app/src/main/res/drawable/ic_attempted.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_codewars_logo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_tag.xml" value="0.1695" />
+        <entry key="app/src/main/res/drawable/ic_task_done.xml" value="0.25" />
       </map>
     </option>
   </component>

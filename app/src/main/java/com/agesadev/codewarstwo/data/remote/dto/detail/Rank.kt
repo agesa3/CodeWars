@@ -7,9 +7,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Rank(
     @Json(name = "color")
-    val color: String,
+    val color: String?,
     @Json(name = "id")
-    val rankId: Int,
+    val rankId: Int?,
     @Json(name = "name")
-    val rankName: String
+    val rankName: String?,
 )

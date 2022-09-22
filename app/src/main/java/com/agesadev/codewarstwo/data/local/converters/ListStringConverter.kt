@@ -6,15 +6,15 @@ import androidx.room.TypeConverter
 class ListStringConverter {
     @TypeConverter
     fun listStringToString(list: List<String>?): String {
-        return list?.joinToString(separator = SEPARATOR) ?: ""
+        return list?.joinToString(separator = SPLITTER) ?: ""
     }
 
     @TypeConverter
     fun stringToListString(str: String?): List<String> {
-        return str?.split(SEPARATOR) ?: emptyList()
+        return str?.split(SPLITTER) ?: emptyList()
     }
 
     companion object {
-        private const val SEPARATOR = ","
+        private const val SPLITTER = ","
     }
 }
