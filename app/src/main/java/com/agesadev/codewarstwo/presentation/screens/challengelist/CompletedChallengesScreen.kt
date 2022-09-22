@@ -18,6 +18,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.agesadev.codewarstwo.R
 import com.agesadev.codewarstwo.presentation.navigation.Screen
 import com.agesadev.codewarstwo.presentation.screens.challengelist.components.CompletedChallengeItem
+import com.agesadev.codewarstwo.util.TestTags.LAZY_COLUMN_COMPLETED
 
 @Composable
 fun CompletedChallengesScreen(
@@ -26,7 +27,7 @@ fun CompletedChallengesScreen(
 ) {
 
     val challenges = viewModel.completedChallenges.collectAsLazyPagingItems()
-    LazyColumn(modifier = Modifier.fillMaxSize().testTag("lazyColumnCompleted")) {
+    LazyColumn(modifier = Modifier.fillMaxSize().testTag(LAZY_COLUMN_COMPLETED)) {
         items(challenges.itemCount) { index ->
             challenges[index]?.let { challenge ->
                 CompletedChallengeItem(challenges = challenge, onChallengeClicked = {

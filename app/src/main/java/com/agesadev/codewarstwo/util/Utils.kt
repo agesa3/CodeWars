@@ -1,7 +1,5 @@
 package com.agesadev.codewarstwo.util
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,25 +31,9 @@ fun dateUtilConverter(inputDate: String): String {
     return ""
 }
 
-
-////use kotlin flows
-//object GetOperation {
-//    fun <T, A> performGetOperation(
-//        databaseQuery: () -> Flow<T>,
-//        networkCall: suspend () -> Resource<A>,
-//        saveCallResult: suspend (A) -> Unit
-//    ): Flow<Resource<T>> =
-//        flow {
-//            emit(Resource.Loading())
-//            val source = databaseQuery.invoke().map { Resource.Success(it) }
-//            emitAll(source)
-//            val responseStatus = networkCall.invoke()
-//            if (responseStatus is Resource.Success) {
-//                responseStatus.data?.let { saveCallResult(it) }
-//            } else if (responseStatus is Resource.Error) {
-//                emit(Resource.Error(responseStatus.message!!))
-//                emitAll(source)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//}
-
+object TestTags {
+    const val LAZY_COLUMN_COMPLETED = "lazyColumnCompleted"
+    const val LIST_CARD_ITEM= "listCardItem"
+    const val CHALLENGE_NAME = "challengeName"
+    const val DATE_COMPLETED = "dateCompleted"
+}
