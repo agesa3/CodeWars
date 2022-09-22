@@ -47,7 +47,9 @@ android {
     }
     lintOptions {
         disable 'TypographyFractions','TypographyQuotes'
-//        baseline = file("lint-baseline.xml")
+        baseline file("lint-baseline.xml")
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
