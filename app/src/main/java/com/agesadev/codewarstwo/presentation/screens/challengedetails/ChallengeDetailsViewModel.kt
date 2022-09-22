@@ -33,18 +33,17 @@ class ChallengeDetailsViewModel @Inject constructor(
 
     private fun getChallengeDetails(challengeId: String) {
         viewModelScope.launch {
-            _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
             getChallengeDetailsUseCase(challengeId).collectLatest { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
+//                        _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
                     }
                     is Resource.Success -> {
                         _challengeDetailState.value = ChallengeDetailsState(
                             isLoading = false,
                             challenge = result.data?.toChallengeDetails()
                         )
-                        Timber.tag("DetailsViewModel")
+                        Timber.tag("ChallengeDetailsScreenViewModel")
                             .d("getChallengeDetails: %s", result.data?.toChallengeDetails())
                     }
                     is Resource.Error -> {
@@ -52,6 +51,7 @@ class ChallengeDetailsViewModel @Inject constructor(
                             isLoading = false,
                             error = result.message ?: "An unexpected error occurred"
                         )
+                        Timber.tag("Error").d("getChallengeDetails: %s", result.message)
                     }
                 }
             }

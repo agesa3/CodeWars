@@ -23,32 +23,30 @@ class ChallengeDetailsRepositoryImpl @Inject constructor(
 ) : ChallengeDetailsRepository {
     override suspend fun getChallengeDetails(challengeId: String): Flow<Resource<ChallengeDetailsDomain>> =
         flow {
-            emit(Resource.Loading())
             val challengeDetails =
                 codeWarsDatabase.challengeDetailsDao().getChallengeDetailsById(challengeId)
+            val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
+            challengeDetailFromDbResponse?.let {
+                emit(Resource.Success(it))
+            }
             if (challengeDetails == null) {
                 try {
-                    Timber.tag("DataFromNetwork")
-                        .d("getChallengeDetails: %s", System.currentTimeMillis())
                     val response = codeWarsApi.getChallengeDetails(challengeId)
                     val challengeDetailsEntity = response.toChallengeDetailsEntity()
                     challengeDetailsEntity.let {
                         codeWarsDatabase.challengeDetailsDao().saveChallengeDetails(it)
                     }
                     val challengeDetailsDomain = challengeDetailsEntity.toChallengeDetailsDomain()
-                    Timber.tag("DataFromNetwork")
-                        .d("getChallengeDetails: %s", challengeDetailsDomain)
                     emit(Resource.Success(challengeDetailsDomain))
                 } catch (e: IOException) {
-                    emit(Resource.Error("Network Error"))
+                    emit(Resource.Error(e.message.toString()))
                 } catch (e: HttpException) {
-                    emit(Resource.Error("Network Error"))
+                    emit(Resource.Error(e.message().toString()))
                 }
             }
-            emit(Resource.Loading())
-            val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
-            challengeDetailFromDbResponse?.let {
-                emit(Resource.Success(it))
-            }
+//            val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
+//            challengeDetailFromDbResponse?.let {
+//                emit(Resource.Success(it))
+//            }
         }
 }

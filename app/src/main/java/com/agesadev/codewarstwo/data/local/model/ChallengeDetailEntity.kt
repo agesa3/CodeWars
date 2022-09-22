@@ -24,7 +24,7 @@ data class ChallengeDetailEntity(
     val name: String,
     val publishedAt: String,
     @Embedded
-    val rank: Rank,
+    val rank: Rank?,
     val slug: String,
     @ColumnInfo(name = "challenge_tags")
     val tags: List<String>,

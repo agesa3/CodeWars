@@ -43,7 +43,7 @@ fun ChallengeDetailsScreen(
     val challengeDetails = detailState.challenge
     val isLoading = detailState.isLoading
     val isError = detailState.error
-    Timber.d("ChallengeDetailsScreen: $challengeDetails")
+    Timber.d("ChallengeDetailsScreen here: $challengeDetails")
     //check if challenge is null or not
     challengeDetails?.let {
         Scaffold(

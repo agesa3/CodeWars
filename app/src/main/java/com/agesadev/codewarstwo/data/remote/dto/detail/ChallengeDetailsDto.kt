@@ -10,38 +10,38 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ChallengeDetailsDto(
     @Json(name = "approvedAt")
-    val approvedAt: String,
+    val approvedAt: String?,
     @Json(name = "approvedBy")
-    val approvedBy: ApprovedBy,
+    val approvedBy: ApprovedBy?,
     @Json(name = "category")
-    val category: String,
+    val category: String?,
     @Json(name = "createdBy")
-    val createdBy: CreatedBy,
+    val createdBy: CreatedBy?,
     @Json(name = "description")
-    val description: String,
+    val description: String?,
     @Json(name = "id")
     val id: String,
     @Json(name = "languages")
-    val languages: List<String>,
+    val languages: List<String>?,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "publishedAt")
-    val publishedAt: String,
+    val publishedAt: String?,
     @Json(name = "rank")
-    val rank: Rank,
+    val rank: Rank?,
     @Json(name = "slug")
-    val slug: String,
+    val slug: String?,
     @Json(name = "tags")
-    val tags: List<String>,
+    val tags: List<String>?,
     @Json(name = "totalAttempts")
-    val totalAttempts: Int,
+    val totalAttempts: Int?,
     @Json(name = "totalCompleted")
-    val totalCompleted: Int,
+    val totalCompleted: Int?,
     @Json(name = "totalStars")
-    val totalStars: Int,
+    val totalStars: Int?,
     @Json(name = "url")
-    val url: String,
+    val url: String?,
     @Json(name = "voteScore")
-    val voteScore: Int
+    val voteScore: Int?
 )
 

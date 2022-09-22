@@ -7,12 +7,14 @@ import com.agesadev.codewarstwo.data.local.model.ChallengeDetailEntity
 import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
 import com.agesadev.codewarstwo.data.remote.dto.completed.ChallengesDto
 import com.agesadev.codewarstwo.data.remote.dto.completed.CompletedChallengesDto
+import com.agesadev.codewarstwo.data.remote.dto.completed.toCompletedChallengesEntity
 import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.ChallengeDetailsDto
 import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.Rank
 import com.agesadev.codewarstwo.domain.model.ChallengeDetailsDomain
 import com.agesadev.codewarstwo.domain.model.CompletedChallengesDomain
+import com.agesadev.codewarstwo.util.Utils.TEST_USERNAME
 import com.google.common.truth.Truth
 import org.junit.Assert.*
 
@@ -53,7 +55,7 @@ class DataLayerMapperKtTest {
             id = "id",
             name = "name",
             slug = "slug",
-            username = "matt c"
+            username = TEST_USERNAME
         )
 
         val challengesDto = ChallengesDto(
@@ -66,6 +68,27 @@ class DataLayerMapperKtTest {
         Truth.assertThat(completedChallengesDomain)
             .isEqualTo(challengesDto.toCompletedChallengesDomain())
     }
+
+    @Test
+    fun `should map challengesDto to challengesEntity`() {
+        val challengesDto = ChallengesDto(
+            completedAt = "2021-01-01",
+            completedLanguages = listOf("java"),
+            id = "id",
+            name = "name",
+            slug = "slug",
+        )
+        val challengesEntity = CompletedChallengesEntity(
+            completedAt = "2021-01-01",
+            completedLanguages = listOf("java"),
+            id = "id",
+            name = "name",
+            slug = "slug",
+            username = TEST_USERNAME
+        )
+        Truth.assertThat(challengesEntity).isEqualTo(challengesDto.toCompletedChallengesEntity())
+    }
+
 
     @Test
     fun `should map challengeDetailsDTO to challengeDetailsEntity`() {

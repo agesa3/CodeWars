@@ -8,7 +8,7 @@ import java.util.*
 object Utils {
     const val DB_NAME = "codewars_db"
     const val BASE_URL = "https://www.codewars.com/api/v1/"
-    const val TEST_USERNAME = "matt c"
+    const val TEST_USERNAME = "g964"
     const val CODEWARS_STARTING_INDEX = 0
     const val PARAM_CHALLENGE_ID = "challengeId"
 }

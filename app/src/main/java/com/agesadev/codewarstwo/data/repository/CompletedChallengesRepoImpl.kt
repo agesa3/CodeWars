@@ -64,21 +64,21 @@ class CompletedChallengesRepoImpl @Inject constructor(
         }
     }
 
-    override fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = NETWORK_PAGE_SIZE,
-                maxSize = NETWORK_PAGE_SIZE + (NETWORK_PAGE_SIZE * 2),
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { CodeWarsPagingSource(codeWarsApi, username) }
-
-        ).flow.map { pagingData ->
-            pagingData.map { completedChallengesEntity ->
-                completedChallengesEntity.toCompletedChallengesDomain()
-            }
-        }
-    }
+//    override fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>> {
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = NETWORK_PAGE_SIZE,
+//                maxSize = NETWORK_PAGE_SIZE + (NETWORK_PAGE_SIZE * 2),
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CodeWarsPagingSource(codeWarsApi, username) }
+//
+//        ).flow.map { pagingData ->
+//            pagingData.map { completedChallengesEntity ->
+//                completedChallengesEntity.toCompletedChallengesDomain()
+//            }
+//        }
+//    }
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 50
