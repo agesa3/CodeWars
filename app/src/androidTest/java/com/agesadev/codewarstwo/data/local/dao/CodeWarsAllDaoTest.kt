@@ -1,14 +1,13 @@
 package com.agesadev.codewarstwo.data.local.dao
 
 
-import androidx.paging.PagingSource
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.local.model.ChallengeDetailEntity
-import com.agesadev.codewarstwo.data.local.model.CompletedChallengesEntity
 import com.agesadev.codewarstwo.data.local.model.RemoteKeys
 import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
@@ -19,12 +18,16 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class CodeWarsAllDaoTest {
+
+    @get:Rule
+    var instanceTaskExecutorRule = InstantTaskExecutorRule()
     private lateinit var codeWarsDatabase: CodeWarsDatabase
     private lateinit var challengesDetailsDao: ChallengeDetailsDao
     private lateinit var remoteKeysDao: RemoteKeysDao
