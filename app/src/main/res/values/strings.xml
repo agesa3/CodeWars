@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CodewarsTwo</string>
+    <string name="total_stars">Total Stars</string>
+    <string name="total_completed">Total Completed</string>
+    <string name="total_attempts">Total Attempts</string>
+    <string name="description">Description</string>
+    <string name="tags">Tags</string>
 </resources>

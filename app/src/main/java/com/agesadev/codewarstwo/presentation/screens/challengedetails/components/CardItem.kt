@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.agesadev.codewarstwo.R
 
 @Composable
-fun CardItem(value: Int, content: String) {
+fun CardItem(value: Int, content: String, imageResource: Int) {
     Card(
         modifier = Modifier
             .width(100.dp)
@@ -30,14 +30,15 @@ fun CardItem(value: Int, content: String) {
         shape = RoundedCornerShape(10.dp),
         elevation = 10.dp
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
             Image(
-                painterResource(R.drawable.ic_launcher_foreground),
+                painterResource(imageResource),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .height(40.dp)
+                    .height(30.dp)
                     .wrapContentWidth()
+                    .align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -64,5 +65,5 @@ fun CardItem(value: Int, content: String) {
 @Preview(showBackground = true)
 @Composable
 fun CardItemPreview() {
-    CardItem(12, content="Stars")
+    CardItem(12, content = "Stars", R.drawable.ic_star)
 }
