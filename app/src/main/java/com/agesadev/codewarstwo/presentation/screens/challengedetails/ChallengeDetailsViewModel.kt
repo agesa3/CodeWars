@@ -1,5 +1,6 @@
 package com.agesadev.codewarstwo.presentation.screens.challengedetails
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -12,6 +13,7 @@ import com.agesadev.codewarstwo.util.Utils.PARAM_CHALLENGE_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,6 +44,8 @@ class ChallengeDetailsViewModel @Inject constructor(
                             isLoading = false,
                             challenge = result.data?.toChallengeDetails()
                         )
+                        Timber.tag("DetailsViewModel")
+                            .d("getChallengeDetails: %s", result.data?.toChallengeDetails())
                     }
                     is Resource.Error -> {
                         _challengeDetailState.value = ChallengeDetailsState(

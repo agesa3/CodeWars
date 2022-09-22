@@ -6,5 +6,5 @@ import okhttp3.Challenge
 data class ChallengeDetailsState(
     val isLoading: Boolean = false,
     val challenge: ChallengeDetails? = null,
-    val error: String = ""
+    val error: String? = null
 )
