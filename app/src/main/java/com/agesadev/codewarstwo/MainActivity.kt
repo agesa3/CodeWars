@@ -32,7 +32,9 @@ class MainActivity : ComponentActivity() {
                             CompletedChallengesScreen(navController)
                         }
                         composable(route = Screen.ChallengeDetailScreen.route + "/{challengeId}") {
-                            ChallengeDetailsScreen()
+                            ChallengeDetailsScreen(
+                                navController = navController
+                            )
                         }
                     }
                 }
