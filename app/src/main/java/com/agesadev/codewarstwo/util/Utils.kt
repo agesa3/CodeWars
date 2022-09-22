@@ -11,6 +11,9 @@ object Utils {
     const val TEST_USERNAME = "g964"
     const val CODEWARS_STARTING_INDEX = 0
     const val PARAM_CHALLENGE_ID = "challengeId"
+    const val CHALLENGE_DETAILS="challenge_details"
+    const val COMPLETED_CHALLENGES="completed_challenges"
+    const val REMOTE_KEYS_TABLE="challenge_remote_keys"
 }
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {

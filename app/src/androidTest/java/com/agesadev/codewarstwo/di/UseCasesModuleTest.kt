@@ -8,13 +8,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object UseCasesModule {
-
-
+object UseCasesModuleTest {
     @Provides
     fun provideGetAllUsersUseCase(challengesRepository: CompletedChallengesRepository) =
         GetCompletedChallengesUseCase(challengesRepository)

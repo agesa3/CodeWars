@@ -32,12 +32,14 @@ fun ChallengeDetailsScreen(
     navController: NavController,
     challengeDetailsViewModel: ChallengeDetailsViewModel = hiltViewModel()
 ) {
+
     val detailState = challengeDetailsViewModel.challengeDetailState.value
     val challengeDetails = detailState.challenge
     val isLoading = detailState.isLoading
     val isError = detailState.error
+
     Timber.d("ChallengeDetailsScreen here: $challengeDetails")
-    //check if challenge is null or not
+
     challengeDetails?.let {
         Scaffold(
             topBar = {
