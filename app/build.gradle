@@ -45,9 +45,12 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-//    lintOptions {
-//        disable 'TypographyFractions','TypographyQuotes'
-//    }
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+        baseline file("lint-baseline.xml")
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {

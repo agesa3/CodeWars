@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.2)" variant="all" version="7.2.2">
+
+    <issue
+        id="LintError"
+        message="Unexpected failure during lint analysis of CodeWarsAllDaoTest.kt (this is a bug in lint or one of the libraries it depends on)&#xA;&#xA;Message: &apos;java.util.List org.jetbrains.uast.UField.getAnnotations()&apos;&#xA;&#xA;The crash seems to involve the detector `dagger.lint.DaggerKotlinIssueDetector`.&#xA;You can try disabling it with something like this:&#xA;    android {&#xA;        lintOptions {&#xA;            disable &quot;JvmStaticProvidesInObjectDetector&quot;, &quot;FieldSiteTargetOnQualifierAnnotation&quot;, &quot;ModuleCompanionObjects&quot;, &quot;ModuleCompanionObjectsNotInModuleParent&quot;&#xA;        }&#xA;    }&#xA;&#xA;Stack: `NoSuchMethodError:DaggerKotlinIssueDetector$createUastHandler$1.visitField(DaggerKotlinIssueDetector.kt:167)←UElementVisitor$DispatchPsiVisitor.visitField(UElementVisitor.kt:659)←KotlinUField.accept(KotlinUField.kt:51)←ImplementationUtilsKt.acceptList(implementationUtils.kt:23)←AbstractKotlinUClass.accept(AbstractKotlinUClass.kt:42)←ImplementationUtilsKt.acceptList(implementationUtils.kt:23)←UFile$DefaultImpls.accept(UFile.kt:87)←KotlinUFile.accept(KotlinUFile.kt:14)`&#xA;&#xA;You can run with --stacktrace or set environment variable `LINT_PRINT_STACKTRACE=true` to dump a full stacktrace to stdout.">
+        <location
+            file="src/androidTest/java/com/agesadev/codewarstwo/data/local/dao/CodeWarsAllDaoTest.kt"/>
+    </issue>
+
+    <issue
+        id="RedundantLabel"
+        message="Redundant label can be removed"
+        errorLine1="            android:label=&quot;@string/app_name&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.7.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="56"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui than 1.2.0 is available: 1.2.1"
+        errorLine1="    implementation &quot;androidx.compose.ui:ui:$compose_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="57"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.material:material than 1.2.0 is available: 1.2.1"
+        errorLine1="    implementation &quot;androidx.compose.material:material:$compose_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="58"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-tooling-preview than 1.2.0 is available: 1.2.1"
+        errorLine1="    implementation &quot;androidx.compose.ui:ui-tooling-preview:$compose_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="59"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.3.1 is available: 2.5.1"
+        errorLine1="    implementation &apos;androidx.lifecycle:lifecycle-runtime-ktx:2.3.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="60"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.activity:activity-compose than 1.3.1 is available: 1.5.1"
+        errorLine1="    implementation &apos;androidx.activity:activity-compose:1.3.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="61"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-test-junit4 than 1.2.0 is available: 1.2.1"
+        errorLine1="    androidTestImplementation &quot;androidx.compose.ui:ui-test-junit4:$compose_version&quot;"
+        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="65"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-tooling than 1.2.0 is available: 1.2.1"
+        errorLine1="    debugImplementation &quot;androidx.compose.ui:ui-tooling:$compose_version&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="66"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose.ui:ui-test-manifest than 1.2.0 is available: 1.2.1"
+        errorLine1="    debugImplementation &quot;androidx.compose.ui:ui-test-manifest:$compose_version&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="67"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.squareup.okhttp3:okhttp than 5.0.0-alpha.2 is available: 5.0.0-alpha.3"
+        errorLine1="    implementation &quot;com.squareup.okhttp3:okhttp:5.0.0-alpha.2&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="78"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.squareup.okhttp3:logging-interceptor than 5.0.0-alpha.2 is available: 5.0.0-alpha.3"
+        errorLine1="    implementation &quot;com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="79"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.dagger:hilt-android than 2.38.1 is available: 2.42"
+        errorLine1="    implementation &quot;com.google.dagger:hilt-android:2.38.1&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="101"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.dagger:hilt-compiler than 2.38.1 is available: 2.43.2"
+        errorLine1="    kapt &quot;com.google.dagger:hilt-compiler:2.38.1&quot;"
+        errorLine2="         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="102"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-splashscreen than 1.0.0-beta02 is available: 1.0.0"
+        errorLine1="    implementation &apos;androidx.core:core-splashscreen:1.0.0-beta02&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="116"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of android.arch.core:core-testing than 1.0.0 is available: 1.1.1"
+        errorLine1="    testImplementation &quot;android.arch.core:core-testing:1.0.0&quot;"
+        errorLine2="                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="123"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1254 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="            android:pathData=&quot;M401.07,0H110.93C49.77,0 0,49.77 0,110.93v290.13C0,462.23 49.77,512 110.93,512h290.13C462.23,512 512,462.23 512,401.07V110.93C512,49.77 462.23,0 401.07,0zM159.63,275.57c1.6,1.6 2.5,3.77 2.5,6.03v42.67c0,9.41 7.66,17.07 17.07,17.07c4.72,0 8.53,3.82 8.53,8.53s-3.81,8.53 -8.53,8.53c-18.83,0 -34.13,-15.31 -34.13,-34.13v-39.13l-23.1,-23.1c-3.34,-3.34 -3.34,-8.73 0,-12.07l23.1,-23.1v-39.13c0,-18.83 15.31,-34.13 34.13,-34.13c4.72,0 8.53,3.82 8.53,8.53c0,4.71 -3.81,8.53 -8.53,8.53c-9.4,0 -17.07,7.65 -17.07,17.07V230.4c0,2.26 -0.9,4.44 -2.5,6.03L140.07,256L159.63,275.57zM298.15,165.05l-68.27,187.73c-1.26,3.46 -4.54,5.61 -8.02,5.61c-0.96,0 -1.95,-0.16 -2.92,-0.51c-4.42,-1.61 -6.72,-6.51 -5.09,-10.94l68.27,-187.73c1.6,-4.42 6.49,-6.7 10.93,-5.1C297.47,155.73 299.77,160.62 298.15,165.05zM390.09,262.04l-23.16,23.1v39.13c0,18.83 -15.31,34.13 -34.13,34.13c-4.72,0 -8.53,-3.82 -8.53,-8.53s3.81,-8.53 8.53,-8.53c9.41,0 17.07,-7.65 17.07,-17.07V281.6c0,-2.27 0.9,-4.45 2.51,-6.04L371.98,256l-19.61,-19.56c-1.6,-1.6 -2.51,-3.77 -2.51,-6.04v-42.67c0,-9.41 -7.65,-17.07 -17.07,-17.07c-4.72,0 -8.53,-3.82 -8.53,-8.53c0,-4.71 3.81,-8.53 8.53,-8.53c18.82,0 34.13,15.31 34.13,34.13v39.13l23.16,23.1c1.6,1.6 2.51,3.77 2.51,6.04C392.6,258.27 391.7,260.45 390.09,262.04z&quot; />"
+        errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_codewars_logo.xml"
+            line="13"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1254 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="              android:pathData=&quot;M401.07,0H110.93C49.77,0 0,49.77 0,110.93v290.13C0,462.23 49.77,512 110.93,512h290.13C462.23,512 512,462.23 512,401.07V110.93C512,49.77 462.23,0 401.07,0zM159.63,275.57c1.6,1.6 2.5,3.77 2.5,6.03v42.67c0,9.41 7.66,17.07 17.07,17.07c4.72,0 8.53,3.82 8.53,8.53s-3.81,8.53 -8.53,8.53c-18.83,0 -34.13,-15.31 -34.13,-34.13v-39.13l-23.1,-23.1c-3.34,-3.34 -3.34,-8.73 0,-12.07l23.1,-23.1v-39.13c0,-18.83 15.31,-34.13 34.13,-34.13c4.72,0 8.53,3.82 8.53,8.53c0,4.71 -3.81,8.53 -8.53,8.53c-9.4,0 -17.07,7.65 -17.07,17.07V230.4c0,2.26 -0.9,4.44 -2.5,6.03L140.07,256L159.63,275.57zM298.15,165.05l-68.27,187.73c-1.26,3.46 -4.54,5.61 -8.02,5.61c-0.96,0 -1.95,-0.16 -2.92,-0.51c-4.42,-1.61 -6.72,-6.51 -5.09,-10.94l68.27,-187.73c1.6,-4.42 6.49,-6.7 10.93,-5.1C297.47,155.73 299.77,160.62 298.15,165.05zM390.09,262.04l-23.16,23.1v39.13c0,18.83 -15.31,34.13 -34.13,34.13c-4.72,0 -8.53,-3.82 -8.53,-8.53s3.81,-8.53 8.53,-8.53c9.41,0 17.07,-7.65 17.07,-17.07V281.6c0,-2.27 0.9,-4.45 2.51,-6.04L371.98,256l-19.61,-19.56c-1.6,-1.6 -2.51,-3.77 -2.51,-6.04v-42.67c0,-9.41 -7.65,-17.07 -17.07,-17.07c-4.72,0 -8.53,-3.82 -8.53,-8.53c0,-4.71 3.81,-8.53 8.53,-8.53c18.82,0 34.13,15.31 34.13,34.13v39.13l23.16,23.1c1.6,1.6 2.51,3.77 2.51,6.04C392.6,258.27 391.7,260.45 390.09,262.04z&quot; />"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_foreground.xml"
+            line="17"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_200` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_200&quot;>#FFBB86FC&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_500` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_500&quot;>#FF6200EE&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.teal_200` appears to be unused"
+        errorLine1="    &lt;color name=&quot;teal_200&quot;>#FF03DAC5&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="6"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.teal_700` appears to be unused"
+        errorLine1="    &lt;color name=&quot;teal_700&quot;>#FF018786&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="7"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.black` appears to be unused"
+        errorLine1="    &lt;color name=&quot;black&quot;>#FF000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_launcher_background` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.ic_launcher_background` appears to be unused"
+        errorLine1="    &lt;color name=&quot;ic_launcher_background&quot;>#FFFFFF&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/ic_launcher_background.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+</issues>
