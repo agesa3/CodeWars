@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.Rank
@@ -33,9 +35,16 @@ fun ChallengeDetailsScreen(challengeDetailsViewModel: ChallengeDetailsViewModel 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {
-                    Text(text = "Challenge Details")
+                title = { Text(text = "Challenge Details") },
+                navigationIcon = {
+                    IconButton(onClick = { navigateHome() }) {
+                        Icon(
+                            imageVector = androidx.compose.material.icons.Icons.Default.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
                 }
+
             )
         }
     ) {
@@ -60,20 +69,10 @@ fun ChallengeDetailsScreen(challengeDetailsViewModel: ChallengeDetailsViewModel 
                 MySpacer(spacerHeight = 10)
                 Text(text = "Approved By ${detailState.challenge?.approvedBy?.usernameApproved}")
                 MySpacer(spacerHeight = 10)
-                Text(
-                    text = "Description",
-                    textAlign = TextAlign.Start,
-                    color = Color.Black,
-                    style = MaterialTheme.typography.h6
-                )
+                MyTitleText(text = "Description")
                 MyMarkDownText(markdown = "${detailState.challenge?.description}")
                 MySpacer(spacerHeight = 10)
-                Text(
-                    text = "Tags",
-                    textAlign = TextAlign.Start,
-                    color = Color.Black,
-                    style = MaterialTheme.typography.h6
-                )
+                MyTitleText(text = "Tags")
                 MySpacer(spacerHeight = 10)
                 FlowRow(
                     mainAxisSpacing = 8.dp,
@@ -85,8 +84,8 @@ fun ChallengeDetailsScreen(challengeDetailsViewModel: ChallengeDetailsViewModel 
                         ChallengeTag(tag = tag)
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(text = "Statistics")
+                MySpacer(spacerHeight = 10)
+                MyTitleText(text = "Statistics")
                 MySpacer(spacerHeight = 10)
                 Row(
                     modifier = Modifier
@@ -103,9 +102,24 @@ fun ChallengeDetailsScreen(challengeDetailsViewModel: ChallengeDetailsViewModel 
     }
 }
 
+fun navigateHome() {
+//    navigate the user to the home screen
+
+}
+
 @Composable
 fun MySpacer(spacerHeight: Int) {
     Spacer(modifier = Modifier.height(spacerHeight.dp))
+}
+
+@Composable
+fun MyTitleText(text: String) {
+    Text(
+        text = text,
+        textAlign = TextAlign.Start,
+        color = Color.Black,
+        style = MaterialTheme.typography.h6
+    )
 }
 
 @Composable
