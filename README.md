@@ -7,6 +7,11 @@ Ive used a default user whose data gets fetched immediately the app launches.The
 
 I have taken approach of having a Single Source of Truth such that data is fetched from the api and then cached to room and only use room to forward that data to the presentation layer.When a challenge is clicked,its details are fetched from the api then cached to the database before being sent to the presentation layer.
 
+### Pending
+Due to ime constraints,I wasnt able to fully accomplish these.
+- Writing more tests.
+- Implementing a search bar so that you can search for any user.
+
 
 ## Table Of Content.
 
