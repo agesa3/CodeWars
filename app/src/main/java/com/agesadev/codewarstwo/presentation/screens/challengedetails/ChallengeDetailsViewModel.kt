@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.agesadev.codewarstwo.domain.mappers.toChallengeDetails
 import com.agesadev.codewarstwo.domain.usecase.GetChallengeDetailsUseCase
+import com.agesadev.codewarstwo.util.ConnectivityObserver
 import com.agesadev.codewarstwo.util.Resource
 import com.agesadev.codewarstwo.util.Utils.PARAM_CHALLENGE_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,7 +37,7 @@ class ChallengeDetailsViewModel @Inject constructor(
             getChallengeDetailsUseCase(challengeId).collectLatest { result ->
                 when (result) {
                     is Resource.Loading -> {
-//                        _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
+                        _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
                     }
                     is Resource.Success -> {
                         _challengeDetailState.value = ChallengeDetailsState(
