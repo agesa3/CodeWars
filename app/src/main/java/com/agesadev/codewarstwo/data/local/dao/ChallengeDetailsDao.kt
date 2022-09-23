@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.agesadev.codewarstwo.data.local.model.ChallengeDetailEntity
-import com.agesadev.codewarstwo.presentation.model.ChallengeDetails
 
 @Dao
 interface ChallengeDetailsDao {

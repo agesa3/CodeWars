@@ -3,7 +3,6 @@ package com.agesadev.codewarstwo.data.repository
 import androidx.paging.*
 import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.mappers.toCompletedChallengesDomain
-import com.agesadev.codewarstwo.data.paging.CodeWarsPagingSource
 import com.agesadev.codewarstwo.data.paging.CodeWarsRemoteMediator
 import com.agesadev.codewarstwo.data.remote.api.CodeWarsApi
 import com.agesadev.codewarstwo.domain.model.CompletedChallengesDomain
@@ -13,15 +12,18 @@ import kotlinx.coroutines.flow.map
 import timber.log.Timber
 import javax.inject.Inject
 
+@OptIn(ExperimentalPagingApi::class)
 class CompletedChallengesRepoImpl @Inject constructor(
     private val codeWarsApi: CodeWarsApi,
     private val codeWarsDatabase: CodeWarsDatabase
 ) : CompletedChallengesRepository {
-    @OptIn(ExperimentalPagingApi::class)
+
     override fun getCompletedChallengesByUsername(username: String): Flow<PagingData<CompletedChallengesDomain>> {
         Timber.tag("Repository").d("getCompletedChallengesByUsername: %s", username)
+
         val pagingSourceFactory =
             { codeWarsDatabase.completedChallengesDao().getCompletedChallengesByUsername(username) }
+
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
@@ -40,45 +42,6 @@ class CompletedChallengesRepoImpl @Inject constructor(
             }
         }
     }
-
-//    @OptIn(ExperimentalPagingApi::class)
-//    override fun getAllCompletedChallenges(): Flow<PagingData<CompletedChallengesDomain>> {
-//        Timber.tag("Repository").d("getAllCompletedChallenges")
-//        val pagingSourceFactory =
-//            { codeWarsDatabase.completedChallengesDao().getCompletedChallenges() }
-//        return Pager(
-//            config = PagingConfig(
-//                pageSize = NETWORK_PAGE_SIZE,
-//                enablePlaceholders = false
-//            ),
-//            remoteMediator = CodeWarsRemoteMediator(
-//                "",
-//                codeWarsApi,
-//                codeWarsDatabase
-//            ),
-//            pagingSourceFactory = pagingSourceFactory
-//        ).flow.map { pagingData ->
-//            pagingData.map { completedChallengesEntity ->
-//                completedChallengesEntity.toCompletedChallengesDomain()
-//            }
-//        }
-//    }
-
-//    override fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>> {
-//        return Pager(
-//            config = PagingConfig(
-//                pageSize = NETWORK_PAGE_SIZE,
-//                maxSize = NETWORK_PAGE_SIZE + (NETWORK_PAGE_SIZE * 2),
-//                enablePlaceholders = false
-//            ),
-//            pagingSourceFactory = { CodeWarsPagingSource(codeWarsApi, username) }
-//
-//        ).flow.map { pagingData ->
-//            pagingData.map { completedChallengesEntity ->
-//                completedChallengesEntity.toCompletedChallengesDomain()
-//            }
-//        }
-//    }
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 50

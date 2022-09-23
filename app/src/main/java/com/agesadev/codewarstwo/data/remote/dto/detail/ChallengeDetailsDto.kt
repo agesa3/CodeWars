@@ -1,9 +1,6 @@
 package com.agesadev.codewarstwo.data.remote.dto.detail
 
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.agesadev.codewarstwo.data.local.model.ChallengeDetailEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

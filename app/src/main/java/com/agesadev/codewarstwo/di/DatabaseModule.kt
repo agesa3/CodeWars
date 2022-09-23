@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    //provide database
+
     @Singleton
     @Provides
     fun providesCodeWarsDatabase(@ApplicationContext applicationContext: Context): CodeWarsDatabase {

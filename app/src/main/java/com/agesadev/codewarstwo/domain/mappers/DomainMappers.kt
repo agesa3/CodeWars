@@ -1,9 +1,5 @@
 package com.agesadev.codewarstwo.domain.mappers
 
-import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
-import com.agesadev.codewarstwo.data.remote.dto.detail.ChallengeDetailsDto
-import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
-import com.agesadev.codewarstwo.data.remote.dto.detail.Rank
 import com.agesadev.codewarstwo.domain.model.ChallengeDetailsDomain
 import com.agesadev.codewarstwo.domain.model.CompletedChallengesDomain
 import com.agesadev.codewarstwo.presentation.model.ChallengeDetails

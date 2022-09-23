@@ -1,6 +1,5 @@
 package com.agesadev.codewarstwo.data.repository
 
-import android.util.Log
 import com.agesadev.codewarstwo.data.local.db.CodeWarsDatabase
 import com.agesadev.codewarstwo.data.mappers.toChallengeDetailsDomain
 import com.agesadev.codewarstwo.data.mappers.toChallengeDetailsEntity
@@ -13,7 +12,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
-import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
@@ -22,6 +20,7 @@ class ChallengeDetailsRepositoryImpl @Inject constructor(
     private val codeWarsDatabase: CodeWarsDatabase
 ) : ChallengeDetailsRepository {
     override suspend fun getChallengeDetails(challengeId: String): Flow<Resource<ChallengeDetailsDomain>> =
+
         flow {
             val challengeDetails =
                 codeWarsDatabase.challengeDetailsDao().getChallengeDetailsById(challengeId)
@@ -29,18 +28,23 @@ class ChallengeDetailsRepositoryImpl @Inject constructor(
             coroutineScope {
                 delay(500)
             }
+
             val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
             challengeDetailFromDbResponse?.let {
                 emit(Resource.Success(it))
             }
+
             if (challengeDetails == null) {
                 try {
+
                     val response = codeWarsApi.getChallengeDetails(challengeId)
                     val challengeDetailsEntity = response.toChallengeDetailsEntity()
                     challengeDetailsEntity.let {
                         codeWarsDatabase.challengeDetailsDao().saveChallengeDetails(it)
                     }
+
                     val challengeDetailsDomain = challengeDetailsEntity.toChallengeDetailsDomain()
+
                     emit(Resource.Success(challengeDetailsDomain))
                 } catch (e: IOException) {
                     emit(Resource.Error(e.message.toString()))
@@ -48,9 +52,5 @@ class ChallengeDetailsRepositoryImpl @Inject constructor(
                     emit(Resource.Error(e.message().toString()))
                 }
             }
-//            val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
-//            challengeDetailFromDbResponse?.let {
-//                emit(Resource.Success(it))
-//            }
         }
 }
