@@ -6,7 +6,6 @@ import timber.log.Timber
 
 @HiltAndroidApp
 class BaseApplication : Application() {
-    //setup timber
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())

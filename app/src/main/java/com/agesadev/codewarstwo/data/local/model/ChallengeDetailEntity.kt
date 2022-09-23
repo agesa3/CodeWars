@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.Rank
-import com.agesadev.codewarstwo.domain.model.ChallengeDetailsDomain
 import com.agesadev.codewarstwo.util.Utils.CHALLENGE_DETAILS
 
 @Entity(tableName = CHALLENGE_DETAILS)

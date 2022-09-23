@@ -1,8 +1,6 @@
 package com.agesadev.codewarstwo.presentation.screens.challengedetails
 
 import android.annotation.SuppressLint
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -10,8 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,20 +19,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import com.agesadev.codewarstwo.R
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.CardItem
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.ChallengeTag
 import com.agesadev.codewarstwo.util.TestTags.MY_SPACER
 import com.agesadev.codewarstwo.util.TestTags.MY_TEXT
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.airbnb.lottie.compose.rememberLottieComposition
 import com.google.accompanist.flowlayout.FlowRow
 import dev.jeziellago.compose.markdowntext.MarkdownText
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -49,14 +39,7 @@ fun ChallengeDetailsScreen(
 
     val detailState = challengeDetailsViewModel.challengeDetailState.value
     val challengeDetails = detailState.challenge
-    val isLoading = detailState.isLoading
-    val isError = detailState.error
-    val context = LocalContext.current
 
-
-    Timber.d("ChallengeDetailsScreen here: $challengeDetails")
-
-    //display progress bar
 
     when (detailState.isLoading) {
         true -> {

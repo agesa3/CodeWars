@@ -7,6 +7,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface CompletedChallengesRepository {
     fun getCompletedChallengesByUsername(username: String): Flow<PagingData<CompletedChallengesDomain>>
-//    fun getAllCompletedChallenges(): Flow<PagingData<CompletedChallengesDomain>>
-//    fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>>
 }

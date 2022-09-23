@@ -39,16 +39,14 @@ class ChallengeDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             getChallengeDetailsUseCase(challengeId).onStart {
                 _challengeDetailState.value = ChallengeDetailsState(isLoading = true)
-                Timber.tag("ViewModel").d("getChallengeDetails: %s", _challengeDetailState.value)
             }.collectLatest { result ->
                 when (result) {
+
                     is Resource.Error -> {
-                        Timber.tag("ViewModel").d("%s ", "getChallengeDetails:" + result.message)
                         _challengeDetailState.value =
                             ChallengeDetailsState(isLoading = false, error = result.message ?: "")
                     }
                     is Resource.Success -> {
-                        Timber.tag("ViewModel").d("getChallengeDetails: %s", result.data)
                         _challengeDetailState.value =
                             ChallengeDetailsState(
                                 isLoading = false,
