@@ -54,6 +54,36 @@ android {
     }
 }
 
+ext {
+
+    junitVersion = '4.13'
+    testExtJunitVersion = '1.1.2'
+    espressoVersion = '3.4.0'
+    daggerHilt = '2.38.1'
+    retrofitVersion = '2.9.0'
+    pagingVersion = '2.1.2'
+    coroutinesVerion='1.6.4'
+    flowRow='0.17.0'
+    okhttpVersion='5.0.0-alpha.2'
+    moshiVersion='1.14.0'
+    kotlinMoshi='1.13.0'
+    roomVersion = '2.4.3'
+    pagingCompose='1.0.0-alpha16'
+    pagingRuntime = '3.1.1'
+    navigation = '2.5.2'
+    hiltNavigation='1.0.0'
+    lifeCycle='2.5.1'
+    markdown='0.3.0'
+    kotlinSerialization='1.3.0'
+    kotlinCoroutinesTest='1.6.4'
+    mockWebserver='4.9.1'
+    mockk='1.12.7'
+    coreTesting='1.0.0'
+    truthLib='1.1.3'
+    kotlinRetrofitSerialization='0.8.0'
+
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -62,84 +92,71 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$junitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVerion"
 
-//flow row
-    implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+    //flow row
+    implementation "com.google.accompanist:accompanist-flowlayout:$flowRow"
     // Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
-    implementation "com.squareup.moshi:moshi:1.14.0"
-    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
-    //room
-    def room_version = "2.4.3"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$kotlinMoshi"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinRetrofitSerialization"
     //ROOM
-    implementation "androidx.room:room-runtime:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
-    implementation "androidx.room:room-ktx:2.4.3"
-    implementation "androidx.room:room-paging:2.4.3"
-    implementation 'androidx.paging:paging-compose:1.0.0-alpha16'
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-paging:$roomVersion"
+    implementation "androidx.paging:paging-compose:$pagingCompose"
 
     //paging
-    def paging_version = "3.1.1"
-    implementation "androidx.paging:paging-runtime:$paging_version"
-    implementation "androidx.paging:paging-compose:1.0.0-alpha16"
+    implementation "androidx.paging:paging-runtime:$pagingRuntime"
+    implementation "androidx.paging:paging-compose:$pagingCompose"
     //navigation
-    def nav_version = "2.5.2"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+    implementation "androidx.navigation:navigation-compose:$navigation"
     //dagger-hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-    //testing
-    testImplementation "androidx.room:room-testing:$room_version"
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation "com.google.dagger:hilt-android:$daggerHilt"
+    kapt "com.google.dagger:hilt-compiler:$daggerHilt"
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltNavigation"
 
-    //LIFE CYCLE
-    // Coroutine Lifecycle Scopes
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycle"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle"
     //compose markdown
-    implementation 'com.github.jeziellago:compose-markdown:0.3.0'
+    implementation "com.github.jeziellago:compose-markdown:$markdown"
     //kotlin serialization
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
-
-    //splash screen api
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialization"
+    implementation 'androidx.core:core-splashscreen:1.0.0'
     //testing
-    androidTestImplementation "com.google.truth:truth:1.1.3"
-    testImplementation "com.google.truth:truth:1.1.3"
-//    implementation "androidx.test:core:1.2.0"
-//    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "android.arch.core:core-testing:1.0.0"
 
-    //jake wharton retrofit kotlinserialization
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 
     // Local unit tests
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
-    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
-    testImplementation "io.mockk:mockk:1.12.7"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesTest"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserver"
+    testImplementation "io.mockk:mockk:$mockk"
+    testImplementation "android.arch.core:core-testing:$coreTesting"
+    testImplementation "com.google.truth:truth:$truthLib"
+    testImplementation "androidx.room:room-testing:$roomVersion"
 
     // Instrumentation tests
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.38.1'
-    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.38.1'
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
-    androidTestImplementation "io.mockk:mockk-android:1.11.0"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$daggerHilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$daggerHilt"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesTest"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserver"
     androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTesting"
+    androidTestImplementation "com.google.truth:truth:$truthLib"
 }
