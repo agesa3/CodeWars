@@ -1,6 +1,8 @@
 package com.agesadev.codewarstwo.presentation.screens.challengedetails
 
 import android.annotation.SuppressLint
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -8,9 +10,12 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -18,14 +23,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import com.agesadev.codewarstwo.R
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.CardItem
 import com.agesadev.codewarstwo.presentation.screens.challengedetails.components.ChallengeTag
 import com.agesadev.codewarstwo.util.TestTags.MY_SPACER
 import com.agesadev.codewarstwo.util.TestTags.MY_TEXT
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.google.accompanist.flowlayout.FlowRow
 import dev.jeziellago.compose.markdowntext.MarkdownText
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -40,8 +51,33 @@ fun ChallengeDetailsScreen(
     val challengeDetails = detailState.challenge
     val isLoading = detailState.isLoading
     val isError = detailState.error
+    val context = LocalContext.current
+
 
     Timber.d("ChallengeDetailsScreen here: $challengeDetails")
+
+    //display progress bar
+
+    when (detailState.isLoading) {
+        true -> {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+
+        }
+        false -> {}
+    }
 
     challengeDetails?.let {
         Scaffold(
@@ -72,26 +108,6 @@ fun ChallengeDetailsScreen(
                 )
             }
         ) {
-            if (isLoading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
-                }
-            }
-            if (!isError.isNullOrBlank()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = "Error")
-                }
-            }
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -152,11 +168,41 @@ fun ChallengeDetailsScreen(
                     }
                 }
             }
+        }
+
+    }
+
+    when (detailState.error.isNotEmpty()) {
+        true -> {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text("An Error Occurred")
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Button(onClick = { challengeDetailsViewModel.retry() }) {
+                            Text(text = "Retry")
+                        }
+                    }
+                }
+            }
+        }
+        false -> {
 
         }
     }
-
-
 }
 
 

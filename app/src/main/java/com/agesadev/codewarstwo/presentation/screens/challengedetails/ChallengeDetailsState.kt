@@ -4,7 +4,7 @@ import com.agesadev.codewarstwo.presentation.model.ChallengeDetails
 import okhttp3.Challenge
 
 data class ChallengeDetailsState(
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val challenge: ChallengeDetails? = null,
-    val error: String? = null
+    val error: String=""
 )
