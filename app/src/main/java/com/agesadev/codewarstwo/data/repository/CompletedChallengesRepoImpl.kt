@@ -41,28 +41,28 @@ class CompletedChallengesRepoImpl @Inject constructor(
         }
     }
 
-    @OptIn(ExperimentalPagingApi::class)
-    override fun getAllCompletedChallenges(): Flow<PagingData<CompletedChallengesDomain>> {
-        Timber.tag("Repository").d("getAllCompletedChallenges")
-        val pagingSourceFactory =
-            { codeWarsDatabase.completedChallengesDao().getCompletedChallenges() }
-        return Pager(
-            config = PagingConfig(
-                pageSize = NETWORK_PAGE_SIZE,
-                enablePlaceholders = false
-            ),
-            remoteMediator = CodeWarsRemoteMediator(
-                "",
-                codeWarsApi,
-                codeWarsDatabase
-            ),
-            pagingSourceFactory = pagingSourceFactory
-        ).flow.map { pagingData ->
-            pagingData.map { completedChallengesEntity ->
-                completedChallengesEntity.toCompletedChallengesDomain()
-            }
-        }
-    }
+//    @OptIn(ExperimentalPagingApi::class)
+//    override fun getAllCompletedChallenges(): Flow<PagingData<CompletedChallengesDomain>> {
+//        Timber.tag("Repository").d("getAllCompletedChallenges")
+//        val pagingSourceFactory =
+//            { codeWarsDatabase.completedChallengesDao().getCompletedChallenges() }
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = NETWORK_PAGE_SIZE,
+//                enablePlaceholders = false
+//            ),
+//            remoteMediator = CodeWarsRemoteMediator(
+//                "",
+//                codeWarsApi,
+//                codeWarsDatabase
+//            ),
+//            pagingSourceFactory = pagingSourceFactory
+//        ).flow.map { pagingData ->
+//            pagingData.map { completedChallengesEntity ->
+//                completedChallengesEntity.toCompletedChallengesDomain()
+//            }
+//        }
+//    }
 
 //    override fun getCompletedChallengesByUsernameFromApi(username: String): Flow<PagingData<CompletedChallengesDomain>> {
 //        return Pager(

@@ -8,8 +8,9 @@ import com.agesadev.codewarstwo.data.remote.dto.detail.ApprovedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.CreatedBy
 import com.agesadev.codewarstwo.data.remote.dto.detail.Rank
 import com.agesadev.codewarstwo.domain.model.ChallengeDetailsDomain
+import com.agesadev.codewarstwo.util.Utils.CHALLENGE_DETAILS
 
-@Entity(tableName = "challenge_details")
+@Entity(tableName = CHALLENGE_DETAILS)
 data class ChallengeDetailEntity(
     @Embedded
     val approvedBy: ApprovedBy,

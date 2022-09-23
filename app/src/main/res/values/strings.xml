@@ -5,4 +5,6 @@
     <string name="total_attempts">Total Attempts</string>
     <string name="description">Description</string>
     <string name="tags">Tags</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="an_error_please_try_again">An Error Occurred.Please Try Again</string>
 </resources>

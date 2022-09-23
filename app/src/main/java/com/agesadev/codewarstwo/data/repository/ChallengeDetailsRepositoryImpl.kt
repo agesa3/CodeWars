@@ -25,6 +25,10 @@ class ChallengeDetailsRepositoryImpl @Inject constructor(
         flow {
             val challengeDetails =
                 codeWarsDatabase.challengeDetailsDao().getChallengeDetailsById(challengeId)
+            //testing if the app will show a progress bar when fetching from db
+            coroutineScope {
+                delay(500)
+            }
             val challengeDetailFromDbResponse = challengeDetails?.toChallengeDetailsDomain()
             challengeDetailFromDbResponse?.let {
                 emit(Resource.Success(it))

@@ -123,6 +123,7 @@ class CodeWarsAllDaoTest {
         assertThat(challengesDetailsDao.getChallengeDetailsById(challengeDetails.id)).isNull()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun should_get_challenge_detail_by_id() = runTest {
         val challengeDetails = ChallengeDetailEntity(
