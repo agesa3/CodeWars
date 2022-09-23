@@ -5,7 +5,7 @@ An android app built using Kotlin that consumes [Codewars API](https://dev.codew
 ### Approach
 Ive used a default user whose data gets fetched immediately the app launches.The app fetches the completed challenges from codewars api and the caches the data to room database.To perform caching I have used Paging3 and Remote Mediator to help in fetching and cahing the paginated data.
 
-I have taken approach of having a Single Source of Truth such that data is fetched from the api and then cached to room and only use room to forward that data to the presentation layer.When a challenge is clicked,its details are fetched from the ap[i then cached to the database before being sent to the presentation layer.
+I have taken approach of having a Single Source of Truth such that data is fetched from the api and then cached to room and only use room to forward that data to the presentation layer.When a challenge is clicked,its details are fetched from the api then cached to the database before being sent to the presentation layer.
 
 
 ## Table Of Content.
@@ -26,7 +26,7 @@ I have taken approach of having a Single Source of Truth such that data is fetch
 - [Helpful Resources](#helpful-resources)
 
 ## Demo
-<img src="https://github.com/agesa3/CodeWars/blob/main/demo/splash.png" width="240"/> <img src="https://github.com/agesa3/CodeWars/blob/main/demo/challengedetails.png" width="240"/> <img src="https://github.com/agesa3/Ships-Clean-architecture/blob/main/screenshots/search.png" width="240"/> <img src="https://github.com/agesa3/CodeWars/blob/main/demo/errorscreen.png" width="250"/> 
+<img src="https://github.com/agesa3/CodeWars/blob/main/demo/splash.png" width="240"/> <img src="https://github.com/agesa3/CodeWars/blob/main/demo/listchallenges.png" width="240"/> <img src="https://github.com/agesa3/CodeWars/blob/main/demo/challengedetails.png" width="240"/>  <img src="https://github.com/agesa3/CodeWars/blob/main/demo/errorscreen.png" width="250"/> 
 
 
 ## Prerequisite.
@@ -111,7 +111,7 @@ This project uses some of the popular libraries, plugins and tools of the androi
 ## Libraries.
 
 - [Hilt](https://dagger.dev/hilt/) - Dependency Injection library.
-- [Jetpack](https://developer.android.com/jetpack)
+- [Jetpack Compose](https://developer.android.com/jetpack/compose)
   
   -   [Android KTX](https://developer.android.com/kotlin/ktx.html) - Provide concise, idiomatic Kotlin to Jetpack and Android platform APIs.
     - [AndroidX](https://developer.android.com/jetpack/androidx) - Major improvement to the original Android [Support Library](https://developer.android.com/topic/libraries/support-library/index), which is no longer maintained.
@@ -124,12 +124,17 @@ and supports coroutines out of the box.
 - [OkHttp-Logging-Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - Logs HTTP request and response data.
 - [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutines.
 - [Flow](https://developer.android.com/kotlin/flow) - Flows are built on top of coroutines and can provide multiple values. A flow is conceptually a stream of data that can be computed asynchronously.
-- [Material Design3](https://material.io/develop/android/docs/getting-started/) - Build awesome beautiful UIs.
+- [Material Design](https://material.io/develop/android/docs/getting-started/) - Build awesome beautiful UIs.
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutines,provides runBlocking coroutine builder used in tests.
+- [Paging3 & Remote Mediapagin3tor](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset from local storage or over network.
+- [Room Database](https://developer.android.com/training/data-storage/room) - The Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
 
 
 ## Testing
--In Progress
+-Unit Tests
+-UI Tests
+
+More test will be added.
   
 
 # Helpful Resources
