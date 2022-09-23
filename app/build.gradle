@@ -62,25 +62,25 @@ ext {
     daggerHilt = '2.38.1'
     retrofitVersion = '2.9.0'
     pagingVersion = '2.1.2'
-    coroutinesVerion='1.6.4'
-    flowRow='0.17.0'
-    okhttpVersion='5.0.0-alpha.2'
-    moshiVersion='1.14.0'
-    kotlinMoshi='1.13.0'
+    coroutinesVerion = '1.6.4'
+    flowRow = '0.17.0'
+    okhttpVersion = '5.0.0-alpha.2'
+    moshiVersion = '1.14.0'
+    kotlinMoshi = '1.13.0'
     roomVersion = '2.4.3'
-    pagingCompose='1.0.0-alpha16'
+    pagingCompose = '1.0.0-alpha16'
     pagingRuntime = '3.1.1'
     navigation = '2.5.2'
-    hiltNavigation='1.0.0'
-    lifeCycle='2.5.1'
-    markdown='0.3.0'
-    kotlinSerialization='1.3.0'
-    kotlinCoroutinesTest='1.6.4'
-    mockWebserver='4.9.1'
-    mockk='1.12.7'
-    coreTesting='1.0.0'
-    truthLib='1.1.3'
-    kotlinRetrofitSerialization='0.8.0'
+    hiltNavigation = '1.0.0'
+    lifeCycle = '2.5.1'
+    markdown = '0.3.0'
+    kotlinSerialization = '1.3.0'
+    kotlinCoroutinesTest = '1.6.4'
+    mockWebserver = '4.9.1'
+    mockk = '1.12.7'
+    coreTesting = '1.0.0'
+    truthLib = '1.1.3'
+    kotlinRetrofitSerialization = '0.8.0'
 
 }
 
@@ -95,6 +95,10 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVerion"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "android.arch.core:core-testing:1.0.0"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 
     //flow row
     implementation "com.google.accompanist:accompanist-flowlayout:$flowRow"
@@ -142,10 +146,8 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesTest"
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserver"
     testImplementation "io.mockk:mockk:$mockk"
-    testImplementation "android.arch.core:core-testing:$coreTesting"
     testImplementation "com.google.truth:truth:$truthLib"
     testImplementation "androidx.room:room-testing:$roomVersion"
-    testImplementation "junit:junit:$junitVersion"
 
     // Instrumentation tests
     androidTestImplementation "com.google.dagger:hilt-android-testing:$daggerHilt"
@@ -153,9 +155,7 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesTest"
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserver"
     androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation "androidx.arch.core:core-testing:$coreTesting"
     androidTestImplementation "com.google.truth:truth:$truthLib"
-    androidTestImplementation "androidx.test.ext:junit:$junitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
