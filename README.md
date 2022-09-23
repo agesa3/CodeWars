@@ -1,6 +1,7 @@
 # CodeWars
 
-An android app built using Kotlin that consumes [Codewars API](https://dev.codewars.com/#introduction) to display a lsit of challes completed by a user and also the challenge details.The leaderboard can be found [here](https://www.codewars.com/users/leaderboard).I chose one user from the leaderboard.It has been built following Clean Architecture Principle, Repository Pattern, MVVM Architecture in the presentation layer as well as Jetpack components.
+An android app built using Kotlin that consumes [Codewars API](https://dev.codewars.com/#introduction) to display a list of challenges completed by a user and also the challenge details.The leaderboard can be found [here](https://www.codewars.com/users/leaderboard).
+I chose one user from the leaderboard.It has been built following Clean Architecture Principle, Repository Pattern, MVVM Architecture in the presentation layer as well as Jetpack components.
 
 ### Approach
 Ive used a default user whose data gets fetched immediately the app launches.The app fetches the completed challenges from codewars api and the caches the data to room database.To perform caching I have used Paging3 and Remote Mediator to help in fetching and cahing the paginated data.
